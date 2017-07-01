@@ -1,4 +1,4 @@
-/* logservice used in mathservice */
+/* logservice */
 import { Injectable } from '@angular/core';
 
 @Injectable()

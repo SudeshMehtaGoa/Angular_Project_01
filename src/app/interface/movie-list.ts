@@ -4,7 +4,7 @@ export interface IMovieList {
     movieDescription: string;
     movieRating: number;
     movieReleaseDate: Date;
-    movieImageURL: string;
+    movieURL: string;
 }
 
 /* Insert new record */
@@ -13,5 +13,5 @@ export interface IMovieModel {
     movieDescription: string;
     movieRating: number;
     movieReleaseDate: Date;
-    movieImageURL: string;
+    movieURL: string;
 }

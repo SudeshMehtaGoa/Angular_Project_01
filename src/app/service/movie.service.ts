@@ -14,7 +14,7 @@ export class MovieService {
     this.movieList.unshift(movieDetail);
   }
 
-  /**Get the cricket list from the array. */
+  /**Get the movie list from the array. */
   getMovieList(): IMovieList[] {
     return this.movieList;
   }

@@ -30,9 +30,6 @@ export class MovieComponent implements OnInit {
   constructor(private _movieService: MovieService,
     private _ratingService: RatingService,
     private _logService: LogService) {
-
-
-
   }
 
   ngOnInit() {
@@ -43,11 +40,10 @@ export class MovieComponent implements OnInit {
       movieDescription: 'Jolly LLB',
       movieRating: 2,
       movieReleaseDate: null,
-      movieImageURL: ''
+      movieURL: ''
     };
 
     this.ratingTypeArray = this._ratingService.getRatingType();
-    console.log(this.ratingTypeArray);
   };
 
   addMovie(values) {
@@ -57,13 +53,8 @@ export class MovieComponent implements OnInit {
       movieDescription: values.movieDescription,
       movieRating: values.movieRating,
       movieReleaseDate: values.movieReleaseDate,
-      movieImageURL: values.movieImageURL
+      movieURL: values.movieURL
     };
-
-    if (this.movieDetail.movieDescription.length == 0) {
-      this.movieDetail.movieDescription = "N/A";
-    }
-
     this._movieService.addMovie(this.movieDetail);
     this.moviesArray = this._movieService.getMovieList();
     this._logService.log();

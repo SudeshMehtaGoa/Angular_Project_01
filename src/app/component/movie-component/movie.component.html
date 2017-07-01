@@ -1,7 +1,7 @@
-<section id="login">
+<section id="movie">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-3" style="background-color:lavender;">
+            <div class="col-md-3" style="background-color:#563d7c;">
                 <div class="form-wrap">
                     <h1>Add a Movie</h1>
                     <form #f="ngForm" novalidate autocomplete="off" (ngSubmit)="addMovie(f.value)">
@@ -60,16 +60,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="movieImageURL">Movie image URL:</label>
-                            <input type="text" [(ngModel)]="movieModel.movieImageURL" name="movieImageURL" id="movieImageURL" class="form-control" placeholder="Movie Image URL"
-                                #refmovieImageURL>
+                            <label for="movieURL">Movie image URL:</label>
+                            <input type="text" [(ngModel)]="movieModel.movieURL" name="movieURL" id="movieURL" class="form-control" placeholder="Movie Image URL"
+                                #refmovieURL>
                         </div>
 
                         <input type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" value="Add" [disabled]="f.invalid">
                         <input type="button" id="btn-reset" class="btn btn-info btn-lg btn-block" value="Reset" (click)="resetForm(f)">
                     </form>
-                    <hr>
                 </div>
+                <br>
                 <!-- /.form-wrap -->
             </div>
             <!-- /.col-xs-12 -->

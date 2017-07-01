@@ -1,38 +1,61 @@
 <div class="container-fluid">
     <div class="row">
         <div>
-            <h1 style="text-align: center;">List of Movies</h1>
-            <hr/>
+            <h1>List of Movies</h1>
             <div class="table-resposive">
                 <table class="table table-filter table-striped">
                     <thead>
                         <tr>
                             <th class="col-xs-1">#</th>
                             <th class="col-xs-2">Movie Name</th>
-                            <th class="col-xs-1">Rating</th>
-                            <th class="col-xs-1">Release Date</th>
-                            <th class="col-xs-6">Description</th>
+                            <th class="col-xs-2">Rating</th>
+                            <th class="col-xs-2">Release Date</th>
+                            <th class="col-xs-5">Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let movieDetail of movieList;let i = index">
-
                             <td>
                                 {{i + 1}}
                             </td>
                             <td>
-                                {{movieDetail?.movieName}}
+                                <div *ngIf="movieDetail?.movieURL.length>0"><a href={{movieDetail?.movieURL}} target="_blank">{{movieDetail?.movieName}}</a></div>
+                                <div *ngIf="movieDetail?.movieURL.length==0">{{movieDetail?.movieName}}</div>
                             </td>
                             <td>
-                                {{movieDetail?.movieRating}}
+                                <div *ngIf="movieDetail?.movieRating==1">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </div>
+                                <div *ngIf="movieDetail?.movieRating==2">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </div>
+                                <div *ngIf="movieDetail?.movieRating==3">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </div>
+                                <div *ngIf="movieDetail?.movieRating==4">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </div>
+                                <div *ngIf="movieDetail?.movieRating==5">
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </div>
                             </td>
                             <td>
                                 {{movieDetail?.movieReleaseDate}}
                             </td>
                             <td>
-                                {{movieDetail?.movieDescription}}
+                                <div *ngIf="movieDetail?.movieDescription.length>0">{{movieDetail?.movieDescription}}</div>
+                                <div *ngIf="movieDetail?.movieDescription.length==0">N/A</div>
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
