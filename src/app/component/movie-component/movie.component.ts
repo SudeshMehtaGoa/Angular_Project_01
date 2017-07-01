@@ -39,9 +39,9 @@ export class MovieComponent implements OnInit {
 
     /**Define default values  */
     this.movieModel = {
-      movieName: '',
-      movieDescription: '',
-      movieRating: null,
+      movieName: 'Jolly LLB',
+      movieDescription: 'Jolly LLB',
+      movieRating: 2,
       movieReleaseDate: null,
       movieImageURL: ''
     };
@@ -56,9 +56,13 @@ export class MovieComponent implements OnInit {
       movieName: values.movieName,
       movieDescription: values.movieDescription,
       movieRating: values.movieRating,
-      movieReleaseDate: new Date(),
+      movieReleaseDate: values.movieReleaseDate,
       movieImageURL: values.movieImageURL
     };
+
+    if (this.movieDetail.movieDescription.length == 0) {
+      this.movieDetail.movieDescription = "N/A";
+    }
 
     this._movieService.addMovie(this.movieDetail);
     this.moviesArray = this._movieService.getMovieList();

@@ -1,0 +1,42 @@
+<div class="container-fluid">
+    <div class="row">
+        <div>
+            <h1 style="text-align: center;">List of Movies</h1>
+            <hr/>
+            <div class="table-resposive">
+                <table class="table table-filter table-striped">
+                    <thead>
+                        <tr>
+                            <th class="col-xs-1">#</th>
+                            <th class="col-xs-2">Movie Name</th>
+                            <th class="col-xs-1">Rating</th>
+                            <th class="col-xs-1">Release Date</th>
+                            <th class="col-xs-6">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let movieDetail of movieList;let i = index">
+
+                            <td>
+                                {{i + 1}}
+                            </td>
+                            <td>
+                                {{movieDetail?.movieName}}
+                            </td>
+                            <td>
+                                {{movieDetail?.movieRating}}
+                            </td>
+                            <td>
+                                {{movieDetail?.movieReleaseDate}}
+                            </td>
+                            <td>
+                                {{movieDetail?.movieDescription}}
+                            </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

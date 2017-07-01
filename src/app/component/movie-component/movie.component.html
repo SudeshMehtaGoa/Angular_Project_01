@@ -1,29 +1,29 @@
 <section id="login">
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-md-3" style="background-color:lavender;">
                 <div class="form-wrap">
                     <h1>Add a Movie</h1>
                     <form #f="ngForm" novalidate autocomplete="off" (ngSubmit)="addMovie(f.value)">
 
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="movieModel.movieName" name="movieName" class="form-control" 
-                                   placeholder="Enter the Movie Name" required #refMovieName='ngModel' 
-                                   maxlength="100" minlength="2">
+                            <label for="movieName">Enter Movie Name:</label>
+                            <input type="text" [(ngModel)]="movieModel.movieName" name="movieName" class="form-control" placeholder="Enter the Movie Name"
+                                required #refMovieName='ngModel' maxlength="100" minlength="2">
 
-                             <div *ngIf="refMovieName.errors && (refMovieName.dirty || refMovieName.touched)" class="alert alert-danger">
+                            <div *ngIf="refMovieName.errors && (refMovieName.dirty || refMovieName.touched)" class="alert alert-danger">
                                 <div [hidden]="!refMovieName.errors.required">
                                     Name is required.
                                 </div>
                                 <div [hidden]="!refMovieName.errors.minlength">
                                     Please enter atleast 2 characeters.
                                 </div>
-                             </div>       
-                        </div>    
+                            </div>
+                        </div>
 
                         <div class="form-group">
-                            <select class="txt-box" name="movieRating" [(ngModel)]="movieModel.movieRating" class="form-control" 
-                                required #refMovieRating='ngModel'>
+                            <label for="movieRating">Enter Movie Rating:</label>
+                            <select class="txt-box" name="movieRating" [(ngModel)]="movieModel.movieRating" class="form-control" required #refMovieRating='ngModel'>
                                 <option [value]="movieModel.movieRating" [disabled]="true">Select Rating</option>
                                 <option *ngFor="let rating of ratingTypeArray" [ngValue]="rating.id">
                                     {{rating.type}}
@@ -34,14 +34,13 @@
                                 <div [hidden]="!refMovieRating.errors.required">
                                     Rating is required.
                                 </div>
-                            </div>    
+                            </div>
                         </div>
 
                         <div class="form-group">
-                            <input type="date" [(ngModel)]="movieModel.movieReleaseDate" name="movieReleaseDate" id="movieReleaseDate" 
-                                   class="form-control" placeholder="Movie Release date (MM/DD/YYYY)" 
-                                   required 
-                                   #refMovieReleaseDate='ngModel'>
+                            <label for="movieReleaseDate">Enter Release Date:</label>
+                            <input type="date" [(ngModel)]="movieModel.movieReleaseDate" name="movieReleaseDate" id="movieReleaseDate" class="form-control"
+                                placeholder="Movie Release date (MM/DD/YYYY)" required #refMovieReleaseDate='ngModel'>
 
                             <div *ngIf="refMovieReleaseDate.errors && (refMovieReleaseDate.dirty || refMovieReleaseDate.touched)" class="alert alert-danger">
                                 <div [hidden]="!refMovieReleaseDate.errors.required">
@@ -54,23 +53,31 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="movieModel.movieDescription" name="movieDescription" id="movieDescription" 
-                                   class="form-control" placeholder="Movie Description" #refMovieDescription>
+                            <label for="movieDescription">Movie Description:</label>
+                            <textarea rows="4" [(ngModel)]="movieModel.movieDescription" name="movieDescription" id="movieDescription" class="form-control"
+                                placeholder="Movie Description" #refMovieDescription>
+                            </textarea>
                         </div>
 
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="movieModel.movieImageURL" name="movieImageURL" id="movieImageURL" 
-                                   class="form-control" placeholder="Movie Image URL" #refmovieImageURL>
+                            <label for="movieImageURL">Movie image URL:</label>
+                            <input type="text" [(ngModel)]="movieModel.movieImageURL" name="movieImageURL" id="movieImageURL" class="form-control" placeholder="Movie Image URL"
+                                #refmovieImageURL>
                         </div>
 
-                        <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Add" [disabled]="f.invalid">
-                        <input type="button" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Reset" (click)="resetForm(f)">
+                        <input type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" value="Add" [disabled]="f.invalid">
+                        <input type="button" id="btn-reset" class="btn btn-info btn-lg btn-block" value="Reset" (click)="resetForm(f)">
                     </form>
                     <hr>
                 </div>
                 <!-- /.form-wrap -->
             </div>
             <!-- /.col-xs-12 -->
+            <div class="col-md-9">
+                <div *ngIf="moviesArray.length > 0">
+                    <app-movie-list [movieList]="moviesArray"></app-movie-list>
+                </div>
+            </div>
         </div>
         <!-- /.row -->
     </div>

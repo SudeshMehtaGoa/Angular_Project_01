@@ -4,13 +4,15 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { MovieComponent } from 'app/component/movie-component/movie.component';
+import { MovieListComponent } from './component/movie-list/movie-list.component';
 
 
 
 /* Second Service is introduced in @NgModule */
 @NgModule({
   declarations: [
-    MovieComponent
+    MovieComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,
