@@ -14,7 +14,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let movieDetail of movieList;let i = index">
+                        <tr *ngFor="let movieDetail of movieList;let i = index" appRowHeighlighter ratingValue={{movieDetail?.movieRating}}>
                             <td>
                                 {{i + 1}}
                             </td>
@@ -24,7 +24,7 @@
                             </td>
                             <td>
                                 <div *ngIf="movieDetail?.movieRating==1">
-                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star" ></span>
                                 </div>
                                 <div *ngIf="movieDetail?.movieRating==2">
                                     <span class="glyphicon glyphicon-star"></span>

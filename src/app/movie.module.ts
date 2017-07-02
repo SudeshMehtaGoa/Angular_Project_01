@@ -6,11 +6,14 @@ import { CommonModule } from '@angular/common';
 
 import { MovieComponent } from 'app/component/movie-component/movie.component';
 import { MovieListComponent } from './component/movie-list/movie-list.component';
+import { RowHeighlighterDirective } from './directive/row-heighlighter.directive';
+
 
 @NgModule({
   declarations: [
     MovieComponent,
-    MovieListComponent
+    MovieListComponent,
+    RowHeighlighterDirective
   ],
   imports: [
     BrowserModule,
