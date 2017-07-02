@@ -13,7 +13,6 @@ export class RowHeighlighterDirective {
 
   @HostListener('mouseenter', ['$event'])
   OnMouseEnter(event: any) {
-    console.log(this.ratingValue);
     switch (+(this.ratingValue)) {
       case 1:
         this.highlight('Red');
@@ -43,7 +42,6 @@ export class RowHeighlighterDirective {
 /* On Row mouseover it checks the rating value and changes the 
    backgroundcolor of movie name and rating column */
   private highlight(color: string) {
-     console.log(this.el.nativeElement.style.bgcolor);
      this.el.nativeElement.cells[1].style.backgroundColor = color;
      this.el.nativeElement.cells[2].style.backgroundColor = color;
   }
