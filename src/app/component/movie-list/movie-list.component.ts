@@ -1,4 +1,4 @@
-
+/* Movie list component */
 import { Component, OnInit, Input } from '@angular/core';
 import { IMovieList } from 'app/interface/movie-list';
 
@@ -9,6 +9,7 @@ import { IMovieList } from 'app/interface/movie-list';
 })
 export class MovieListComponent implements OnInit {
 
+/* Read movielist array from movieadd component */
   @Input() movieList;
   movieDetail: IMovieList;
   constructor() { }

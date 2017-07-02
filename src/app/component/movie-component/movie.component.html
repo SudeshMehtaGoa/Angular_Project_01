@@ -1,14 +1,17 @@
+<!-- Add Movie component -->
 <section id="movie">
     <div class="container-fluid">
         <div class="row">
+<!-- On left side of screen show Add Movie input box -->
             <div class="col-md-3" style="background-color:#563d7c;">
                 <div class="form-wrap">
                     <h1>Add a Movie</h1>
                     <form #f="ngForm" novalidate autocomplete="off" (ngSubmit)="addMovie(f.value)">
-
+<!-- Movie Name with validation -->
                         <div class="form-group">
                             <label for="movieName">Enter Movie Name:</label>
-                            <input type="text" [(ngModel)]="movieModel.movieName" name="movieName" class="form-control" placeholder="Enter the Movie Name"
+                            <input type="text" [(ngModel)]="movieModel.movieName" name="movieName" class="form-control" 
+                                placeholder="Enter the Movie Name"
                                 required #refMovieName='ngModel' maxlength="100" minlength="2">
 
                             <div *ngIf="refMovieName.errors && (refMovieName.dirty || refMovieName.touched)" class="alert alert-danger">
@@ -20,10 +23,11 @@
                                 </div>
                             </div>
                         </div>
-
+<!-- Movie rating combobox with validation -->
                         <div class="form-group">
                             <label for="movieRating">Enter Movie Rating:</label>
-                            <select class="txt-box" name="movieRating" [(ngModel)]="movieModel.movieRating" class="form-control" required #refMovieRating='ngModel'>
+                            <select class="txt-box" name="movieRating" [(ngModel)]="movieModel.movieRating" class="form-control" 
+                                required #refMovieRating='ngModel'>
                                 <option [value]="movieModel.movieRating" [disabled]="true">Select Rating</option>
                                 <option *ngFor="let rating of ratingTypeArray" [ngValue]="rating.id">
                                     {{rating.type}}
@@ -36,13 +40,14 @@
                                 </div>
                             </div>
                         </div>
-
+<!-- Movie Release Date with date picker and validation -->
                         <div class="form-group">
                             <label for="movieReleaseDate">Enter Release Date:</label>
-                            <input type="date" [(ngModel)]="movieModel.movieReleaseDate" name="movieReleaseDate" id="movieReleaseDate" class="form-control"
-                                placeholder="Movie Release date (MM/DD/YYYY)" required #refMovieReleaseDate='ngModel'>
+                            <input type="date" [(ngModel)]="movieModel.movieReleaseDate" name="movieReleaseDate" id="movieReleaseDate" 
+                                   class="form-control" placeholder="Movie Release date (MM/DD/YYYY)" required #refMovieReleaseDate='ngModel'>
 
-                            <div *ngIf="refMovieReleaseDate.errors && (refMovieReleaseDate.dirty || refMovieReleaseDate.touched)" class="alert alert-danger">
+                            <div *ngIf="refMovieReleaseDate.errors && (refMovieReleaseDate.dirty || refMovieReleaseDate.touched)" 
+                                  class="alert alert-danger">
                                 <div [hidden]="!refMovieReleaseDate.errors.required">
                                     Date is required.
                                 </div>
@@ -51,30 +56,33 @@
                                 </div>
                             </div>
                         </div>
-
+<!-- Movie Description without validations -->
                         <div class="form-group">
                             <label for="movieDescription">Movie Description:</label>
                             <textarea rows="4" [(ngModel)]="movieModel.movieDescription" name="movieDescription" id="movieDescription" class="form-control"
                                 placeholder="Movie Description" #refMovieDescription>
                             </textarea>
                         </div>
-
+<!-- Movie URL without validations -->
                         <div class="form-group">
                             <label for="movieURL">Movie image URL:</label>
                             <input type="text" [(ngModel)]="movieModel.movieURL" name="movieURL" id="movieURL" class="form-control" placeholder="Movie Image URL"
                                 #refmovieURL>
                         </div>
-
+<!-- Submit button is enabled only if form is valid -->
                         <input type="submit" id="btn-submit" class="btn btn-success btn-lg btn-block" value="Add" [disabled]="f.invalid">
+<!-- Form reset button -->
                         <input type="button" id="btn-reset" class="btn btn-info btn-lg btn-block" value="Reset" (click)="resetForm(f)">
                     </form>
                 </div>
                 <br>
                 <!-- /.form-wrap -->
             </div>
-            <!-- /.col-xs-12 -->
+            <!-- /.col-md-3 -->
+<!-- On right side of screen show Movie list -->
             <div class="col-md-9">
                 <div *ngIf="moviesArray.length > 0">
+<!-- Pass MoviesArray to Movie List component -->
                     <app-movie-list [movieList]="moviesArray"></app-movie-list>
                 </div>
             </div>

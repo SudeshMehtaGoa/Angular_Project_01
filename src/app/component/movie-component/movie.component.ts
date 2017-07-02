@@ -1,3 +1,4 @@
+/* Add Movie Component */
 import { Component, ViewEncapsulation, OnInit } from '@angular/core';
 
 /* interfaces */
@@ -31,21 +32,19 @@ export class MovieComponent implements OnInit {
     private _ratingService: RatingService,
     private _logService: LogService) {
   }
-
+/**Define default values on ngOnInit function */
   ngOnInit() {
-
-    /**Define default values  */
     this.movieModel = {
-      movieName: 'Jolly LLB',
-      movieDescription: 'Jolly LLB',
-      movieRating: 2,
+      movieName: null,
+      movieDescription: null,
+      movieRating: null,
       movieReleaseDate: null,
-      movieURL: ''
+      movieURL: null
     };
 
     this.ratingTypeArray = this._ratingService.getRatingType();
   };
-
+/* addMovie method linked to form ngSubmit */
   addMovie(values) {
 
     this.movieDetail = {
@@ -58,13 +57,10 @@ export class MovieComponent implements OnInit {
     this._movieService.addMovie(this.movieDetail);
     this.moviesArray = this._movieService.getMovieList();
     this._logService.log();
-    console.log(this.moviesArray);
   };
-
+/* Form reset */
   resetForm(f) {
     f.reset();
   };
-
-
 }
 

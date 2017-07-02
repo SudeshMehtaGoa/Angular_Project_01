@@ -1,3 +1,4 @@
+<!-- Movie list HTML -->
 <div class="container-fluid">
     <div class="row">
         <div>
@@ -14,15 +15,18 @@
                         </tr>
                     </thead>
                     <tbody>
+<!-- Usage of *ngFor and User defined Directive linked with passing value -->
                         <tr *ngFor="let movieDetail of movieList;let i = index" appRowHeighlighter ratingValue={{movieDetail?.movieRating}}>
                             <td>
                                 {{i + 1}}
                             </td>
                             <td>
+<!-- if URL is present then you can click movie name to open URL of movie -->
                                 <div *ngIf="movieDetail?.movieURL.length>0"><a href={{movieDetail?.movieURL}} target="_blank">{{movieDetail?.movieName}}</a></div>
                                 <div *ngIf="movieDetail?.movieURL.length==0">{{movieDetail?.movieName}}</div>
                             </td>
                             <td>
+<!--Usage of *ngIf and show stars as per rating selected -->
                                 <div *ngIf="movieDetail?.movieRating==1">
                                     <span class="glyphicon glyphicon-star" ></span>
                                 </div>
@@ -53,6 +57,7 @@
                                 {{movieDetail?.movieReleaseDate}}
                             </td>
                             <td>
+<!-- Movie description is not present then show N/A -->
                                 <div *ngIf="movieDetail?.movieDescription.length>0">{{movieDetail?.movieDescription}}</div>
                                 <div *ngIf="movieDetail?.movieDescription.length==0">N/A</div>
                             </td>
