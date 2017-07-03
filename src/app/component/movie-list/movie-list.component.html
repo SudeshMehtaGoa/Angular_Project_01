@@ -22,8 +22,11 @@
                             </td>
                             <td>
 <!-- if URL is present then you can click movie name to open URL of movie -->
-                                <div *ngIf="movieDetail?.movieURL.length>0"><a href={{movieDetail?.movieURL}} target="_blank">{{movieDetail?.movieName}}</a></div>
-                                <div *ngIf="movieDetail?.movieURL.length==0">{{movieDetail?.movieName}}</div>
+                                <div *ngIf="!movieDetail?.movieURL">{{movieDetail?.movieName}}</div>
+                                <div *ngIf="movieDetail?.movieURL">   
+                                    <div *ngIf="movieDetail?.movieURL.length>0"><a href={{movieDetail?.movieURL}} target="_blank">{{movieDetail?.movieName}}</a></div>
+                                    <div *ngIf="movieDetail?.movieURL.length==0">{{movieDetail?.movieName}}</div>
+                                </div>  
                             </td>
                             <td>
 <!--Usage of *ngIf and show stars as per rating selected -->
@@ -58,8 +61,11 @@
                             </td>
                             <td>
 <!-- Movie description is not present then show N/A -->
-                                <div *ngIf="movieDetail?.movieDescription.length>0">{{movieDetail?.movieDescription}}</div>
-                                <div *ngIf="movieDetail?.movieDescription.length==0">N/A</div>
+                                <div *ngIf="!movieDetail?.movieDescription">N/A</div>
+                                <div *ngIf="movieDetail?.movieDescription"> 
+                                    <div *ngIf="movieDetail?.movieDescription.length>0">{{movieDetail?.movieDescription}}</div>
+                                    <div *ngIf="movieDetail?.movieDescription.length==0">N/A</div> 
+                                </div>
                             </td>
                         </tr>
                     </tbody>
